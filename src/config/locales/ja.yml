@@ -3,8 +3,8 @@ ja:
   activerecord:
     models:
       user: "ユーザー"
-      user_tweet: "ツイート"
       admin_user: "管理者"
+      product: "商品"
     attributes:
       user:
         name: "名前"
@@ -12,8 +12,9 @@ ja:
         current_password: "現在のパスワード"
         password: "パスワード"
         password_confirmation: "パスワードの確認"
-      user_tweet:
-        content: "投稿内容"
+      product:
+        name: "名前"
+        price: "価格"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

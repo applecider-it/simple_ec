@@ -1,0 +1,16 @@
+# 商品モデル
+# 
+# ドキュメント
+# /documents/models/product.md
+class Product < ApplicationRecord
+  include Discard::Model
+
+  validates :name, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+
+  # キーワード検索用スコープ
+  scope :search_by_keyword, ->(keyword) {
+    return all if keyword.blank?
+    where("name LIKE ? OR description LIKE ?", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%")
+  }
+end

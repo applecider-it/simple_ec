@@ -3,3 +3,14 @@ bin/rails db:create
 bin/rails db:migrate
 
 
+rails generate migration CreateProducts name:string price:integer description:text discarded_at:datetime
+
+rails generate model Product --skip
+
+rails console
+
+Product.create(name: "Example Product", price: 1000, description: "サンプル商品")
+
+
+rails generate controller Admin::Products
+

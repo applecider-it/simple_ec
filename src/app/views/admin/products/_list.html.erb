@@ -1,0 +1,26 @@
+<div class="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
+  <table class="min-w-full divide-y divide-gray-200 text-sm">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="px-6 py-3 text-left font-semibold text-gray-600">ID</th>
+        <th class="px-6 py-3 text-left font-semibold text-gray-600">名前</th>
+        <th class="px-6 py-3 text-left font-semibold text-gray-600">作成日時</th>
+        <th class="px-6 py-3 text-left font-semibold text-gray-600">削除日時</th>
+        <th class="px-6 py-3 text-right font-semibold text-gray-600">操作</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      <% @products.each do |product| %>
+      <tr class="hover:bg-gray-50 transition">
+        <td class="px-6 py-4 text-gray-700"><%= product.id %></td>
+        <td class="px-6 py-4 font-medium text-gray-900"><%= product.name %></td>
+        <td class="px-6 py-4"><%= product.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td class="px-6 py-4"><%= product.discarded_at ? product.discarded_at.strftime("%Y-%m-%d %H:%M") : '' %></td>
+        <td class="px-6 py-4 text-right">
+          <%= link_to "編集", edit_admin_product_path(product), class: "app-link-normal" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

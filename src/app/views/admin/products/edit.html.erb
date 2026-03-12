@@ -1,0 +1,24 @@
+<% breadcrumb :edit_admin_product, @product %>
+
+<h2 class="app-h2">商品変更</h2>
+
+<%= form_with(model: @product, url: admin_product_path(@product), scope: :product) do |form| %>
+  <%= render "form", form: form, product: @product %>
+
+  <%= render "info", form: form, product: @product %>
+
+  <div class="my-2">
+    <%= form.submit "確定", class: "app-btn-primary w-40" %>
+  </div>
+<% end %>
+
+
+<div class="mt-5">
+  <%= link_to "一覧", admin_products_path, class: "app-link-normal" %>
+</div>
+
+<br>
+
+  <%= button_to "削除", admin_product_path(@product), method: :delete,
+    class: "app-btn-danger w-20 mt-10",
+    form: { onsubmit: "return confirm('本当に削除しますか？');" } %>

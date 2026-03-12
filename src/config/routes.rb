@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     scope as: "admin", module: "admin" do
       get "", to: "home#index"
       resources :users, except: [:show]
+      resources :products, except: [:show]
     end
   end
 end
