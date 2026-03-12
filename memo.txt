@@ -1,0 +1,57 @@
+
+cd /home/owner/workspace/tmp/simple_ec/src
+
+-----------------------------------
+
+port
+
+rails: 3000
+vite: 3036
+
+-----------------------------------
+
+開発サーバーを起動
+
+-------
+
+Rails
+
+foreman start -f Procfile.dev
+
+
+-----------------------------------
+
+
+http://localhost:3000/
+
+test@localhost.com / testtest
+
+test2@localhost.com / test2test2
+
+
+http://localhost:3000/admin_secret/
+
+admin@example.com / adminadmin
+
+
+管理者追加
+
+bin/rails db:seed
+
+
+-----------------------------------
+
+ポスグレ接続
+
+sudo -u postgres psql
+
+DB一覧
+\l
+
+DB切り替え
+\c db_name
+
+テーブル一覧
+dt
+
+-----------------------------------

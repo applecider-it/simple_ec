@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* ボタン */
+
+  .app-btn {
+    @apply font-semibold px-4 py-2 rounded transition;
+  }
+  .app-btn-primary {
+    @apply app-btn bg-blue-500 hover:bg-blue-600 text-white;
+  }
+  .app-btn-secondary {
+    @apply app-btn bg-gray-500 hover:bg-gray-600 text-white;
+  }
+  .app-btn-danger {
+    @apply app-btn bg-red-500 hover:bg-red-600 text-white;
+  }
+
+  /* タイトル */
+
+  .app-h1 {
+    @apply text-5xl font-extrabold tracking-tight text-gray-900 mb-6;
+  }
+  .app-h2 {
+    @apply text-4xl font-bold tracking-tight text-gray-800 border-l-8 pl-4 border-blue-300 inline-block mb-4;
+  }
+  .app-h3 {
+    @apply text-2xl font-semibold text-gray-700 mb-3;
+  }
+  .app-h4 {
+    @apply text-xl font-medium text-gray-600 mb-2;
+  }
+
+  /* テキストボックス */
+  .app-form-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition;
+  }
+
+  /* フォームのラベル */
+  .app-form-label {
+    @apply block font-medium text-gray-700;
+  }
+
+  /* 通常のリンク */
+  .app-link-normal {
+    @apply text-blue-600 hover:underline;
+  }
+
+  /* アクティブなリンク */
+  .app-link-active {
+    @apply text-gray-400 hover:no-underline;
+  }
+
+  /* 通常のコンテナ */
+  .app-container-normal {
+    @apply mx-auto max-w-4xl pt-5;
+  }
+}
