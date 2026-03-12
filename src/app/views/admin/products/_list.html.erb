@@ -11,15 +11,16 @@
     </thead>
     <tbody class="divide-y divide-gray-100">
       <% @products.each do |product| %>
-      <tr class="hover:bg-gray-50 transition">
-        <td class="px-6 py-4 text-gray-700"><%= product.id %></td>
-        <td class="px-6 py-4 font-medium text-gray-900"><%= product.name %></td>
-        <td class="px-6 py-4"><%= product.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-        <td class="px-6 py-4"><%= product.discarded_at ? product.discarded_at.strftime("%Y-%m-%d %H:%M") : '' %></td>
-        <td class="px-6 py-4 text-right">
-          <%= link_to "編集", edit_admin_product_path(product), class: "app-link-normal" %>
-        </td>
-      </tr>
+        <tr class="transition
+         <% if product.discarded? %>bg-gray-300 hover:bg-gray-200<% else %>hover:bg-gray-50<% end %>">
+          <td class="px-6 py-4 text-gray-700"><%= product.id %></td>
+          <td class="px-6 py-4 font-medium text-gray-900"><%= product.name %></td>
+          <td class="px-6 py-4"><%= product.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td class="px-6 py-4"><%= product.discarded_at ? product.discarded_at.strftime("%Y-%m-%d %H:%M") : '' %></td>
+          <td class="px-6 py-4 text-right">
+            <%= link_to "編集", edit_admin_product_path(product), class: "app-link-normal" %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

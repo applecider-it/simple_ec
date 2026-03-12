@@ -1,5 +1,5 @@
 class Admin::ProductsController < Admin::BaseController
-  before_action :set_product, only: %i[ edit update destroy ]
+  before_action :set_product, only: %i[ edit update destroy restore ]
   before_action :edit_common, only: %i[ edit update ]
 
   # 一覧画面
@@ -61,12 +61,20 @@ class Admin::ProductsController < Admin::BaseController
   def destroy
     @product.discard
 
-    redirect_to admin_products_path, notice: "削除しました。", status: :see_other
+    redirect_to edit_admin_product_path(@product), notice: "削除しました。", status: :see_other
   end
+
+  # 復元処理
+  def restore
+    @product.undiscard
+
+    redirect_to edit_admin_product_path(@product), notice: "復元しました。", status: :see_other
+  end
+
 
   # カレントデータの取得
   private def set_product
-    @product = Product.kept.find(params.expect(:id))
+    @product = Product.find(params.expect(:id))
   end
 
   # 変更可能な項目だけを絞り込む

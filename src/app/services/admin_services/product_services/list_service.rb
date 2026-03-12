@@ -4,7 +4,6 @@ class AdminServices::ProductServices::ListService
   def get_list(page, keyword)
     Product
       .order(id: :desc)
-      .kept
       .search_by_keyword(keyword)
       .page(page)
       .per(10)
