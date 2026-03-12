@@ -1,0 +1,35 @@
+<div class="max-w-6xl mx-auto px-4 py-10">
+  <div class="grid md:grid-cols-2 gap-8">
+
+    <!-- 商品画像 -->
+    <div>
+      <%= image_tag "sample.svg", alt: @product.name, class: "w-full rounded-lg shadow" %>
+    </div>
+
+    <!-- 商品情報 -->
+    <div class="flex flex-col gap-4">
+
+      <!-- 商品名 -->
+      <h2 class="text-2xl font-bold">
+        <%= @product.name %>
+      </h2>
+
+      <!-- 価格 -->
+      <p class="text-3xl text-red-500 font-semibold">
+        ¥<%= @product.price %>
+      </p>
+
+      <!-- 商品説明 -->
+      <p class="text-gray-600 leading-relaxed">
+        <%= @product.description %>
+      </p>
+
+      <!-- 購入ボタン -->
+      <button class="app-btn-primary">
+        カートに追加
+      </button>
+
+    </div>
+
+  </div>
+</div>

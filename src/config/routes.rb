@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
+  # 商品
+  resources :products, only: [:index, :show]
+
   # 開発者向けページ
   get "development/index"
 
