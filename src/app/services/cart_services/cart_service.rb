@@ -34,8 +34,36 @@ class CartServices::CartService
     p @session[@session_key]
   end
 
-  # 商品一覧
-  def all
+  # 商品サマリー
+  def summary
+    list = cart_list
+
+    checkout_service = CartServices::CheckoutService.new
+
+    summary = checkout_service.summary(list)
+
+    Rails.logger.debug "summary"
+    p summary
+
+    summary
+  end
+
+  # 商品削除
+  def destroy(product)
+
+    cart = get_session
+
+    init_cart_product(cart, product)
+    delete_cart_product(cart, product)
+
+    set_session(cart)
+
+    Rails.logger.debug "SESSION :cart"
+    p @session[@session_key]
+  end
+
+  # カート情報
+  private def cart_list
     cart = get_session
 
     product_ids = cart.keys
@@ -55,21 +83,7 @@ class CartServices::CartService
       })
     end
 
-    { list: list }
-  end
-
-  # 商品削除
-  def destroy(product)
-
-    cart = get_session
-
-    init_cart_product(cart, product)
-    delete_cart_product(cart, product)
-
-    set_session(cart)
-
-    Rails.logger.debug "SESSION :cart"
-    p @session[@session_key]
+    list
   end
 
   # 一時データに、商品追加

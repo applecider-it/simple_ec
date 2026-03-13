@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   # カート
-  get "cart/index"
+  get "cart", to: "cart#index"
   delete "cart/:id", to: "cart#destroy", as: "cart_destroy"
 
   # 開発者向けページ

@@ -4,7 +4,7 @@ class CartController < ApplicationController
 
   # 一覧画面
   def index
-    @cart = @cart_service.all
+    @summary = @cart_service.summary
   end
 
   # カートから削除
