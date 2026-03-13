@@ -40,7 +40,7 @@ class CartServices::CartService
 
     summary_service = OrderServices::SummaryService.new
 
-    summary = summary_service.summary(list)
+    summary = summary_service.summary_by_cart(list)
 
     Rails.logger.debug "summary"
     p summary

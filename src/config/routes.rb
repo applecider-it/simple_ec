@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # オーダー
+  resources :orders, only: [:index]
+
   # カート
   get "cart", to: "cart#index"
   delete "cart/:id", to: "cart#destroy", as: "cart_destroy"
