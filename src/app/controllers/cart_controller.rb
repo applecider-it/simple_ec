@@ -9,13 +9,15 @@ class CartController < ApplicationController
 
   # カートから削除
   def destroy
-    redirect_to product_path(@product), notice: "カートから削除しました"
+    @cart_service.destroy(@product)
+    redirect_to cart_index_path, notice: "カートから削除しました"
   end
 
   # カレントデータの取得
   private def set_product
     edit_service = ProductServices::EditService.new
-    @product = edit_service.find_product(params.expect(:id))
+    info = edit_service.find_product(params.expect(:id))
+    @product = info[:product]
   end
 
   # カートの設定

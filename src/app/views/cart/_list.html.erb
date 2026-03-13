@@ -7,6 +7,10 @@
       <div class="mt-5">
         <%= row[:amount] %>個
       </div>
+      <div class="mt-5">
+        <%= button_to "削除", cart_destroy_path(row[:product]), method: :delete,
+          class: "app-btn-danger" %>
+      </div>
     </div>
   <% end %>
 </div>

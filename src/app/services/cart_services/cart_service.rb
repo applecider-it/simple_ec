@@ -9,6 +9,8 @@
 #     "amount": int
 #   }
 # }
+# 
+# 例: { "1" => { "amount" => 2 }, "3" => { "amount" => 1 } }
 class CartServices::CartService
   def initialize(session)
     @session = session
@@ -28,25 +30,46 @@ class CartServices::CartService
 
     set_session(cart)
 
+    Rails.logger.debug "SESSION :cart"
     p @session[@session_key]
   end
 
   # 商品一覧
   def all
-    list = []
-
     cart = get_session
 
+    product_ids = cart.keys
+
+    # index_by(&:id) で { 1 => product_obj, 3 => product_obj } の形にする
+    products = Product.where(id: product_ids).index_by(&:id)
+
+    list = []
+
     cart.each do |product_id, row|
+      product = products[product_id.to_i]  # セッションキーが文字列のため to_i
+      next unless product  # 商品が削除されている場合はスキップ
+
       list.push({
-        amount: row["amount"],
-        product: Product.find(product_id),
+        amount: row["amount"].to_i,
+        product: product
       })
     end
 
-    {
-      list: list,
-    }
+    { list: list }
+  end
+
+  # 商品削除
+  def destroy(product)
+
+    cart = get_session
+
+    init_cart_product(cart, product)
+    delete_cart_product(cart, product)
+
+    set_session(cart)
+
+    Rails.logger.debug "SESSION :cart"
+    p @session[@session_key]
   end
 
   # 一時データに、商品追加

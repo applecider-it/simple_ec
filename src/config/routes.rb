@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   end
 
   # カート
-  resources :cart, only: [:index, :destroy]
+  get "cart/index"
+  delete "cart/:id", to: "cart#destroy", as: "cart_destroy"
 
   # 開発者向けページ
   get "development/index"
