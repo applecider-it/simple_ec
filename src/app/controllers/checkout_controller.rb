@@ -12,12 +12,14 @@ class CheckoutController < ApplicationController
 
     checkout_service.checkout(current_user, @summary)
 
+    @cart_service.clear
+
     redirect_to root_path, notice: "購入しました"
   end
 
   # 共通のセットアップ
   private def setup
-    cart_service = CartServices::CartService.new(session)
-    @summary = cart_service.summary
+    @cart_service = CartServices::CartService.new(session)
+    @summary = @cart_service.summary
   end
 end

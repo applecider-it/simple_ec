@@ -10,8 +10,6 @@ class CartServices::CartService
   def add(product, add_cart_form)
     Rails.logger.debug "product id #{product.id} add_cart_form.amount #{add_cart_form.amount}"
 
-    #@session.delete(@session_key)  # 動作確認用
-
     cart = @data_service.get_session
 
     @data_service.init_cart_product(cart, product)
@@ -49,5 +47,10 @@ class CartServices::CartService
 
     Rails.logger.debug "SESSION :cart"
     p @session[@session_key]
+  end
+
+  # クリア
+  def clear
+    @data_service.clear
   end
 end

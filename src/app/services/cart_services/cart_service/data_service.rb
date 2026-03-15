@@ -68,4 +68,9 @@ class CartServices::CartService::DataService
   def set_session(cart)
     @session[@session_key] = cart
   end
+
+  # クリア
+  def clear
+    @session.delete(@session_key)
+  end
 end
