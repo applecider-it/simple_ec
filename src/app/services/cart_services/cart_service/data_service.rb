@@ -43,19 +43,13 @@ class CartServices::CartService::DataService
 
   # 一時データに、商品追加
   def add_cart_product(cart, product, add_cart_form)
+    init_cart_product(cart, product)
     cart[product.id.to_s]["amount"] += add_cart_form.amount.to_i
-  end
-
-  # 一時データの、商品初期化
-  def init_cart_product(cart, product)
-    initial_data = {
-      "amount" => 0,
-    }
-    cart[product.id.to_s] = cart[product.id.to_s] || initial_data
   end
 
   # 一時データの、商品削除
   def delete_cart_product(cart, product)
+    init_cart_product(cart, product)
     cart.delete(product.id.to_s)
   end
 
@@ -72,5 +66,13 @@ class CartServices::CartService::DataService
   # クリア
   def clear
     @session.delete(@session_key)
+  end
+
+  # 一時データの、商品初期化
+  private def init_cart_product(cart, product)
+    initial_data = {
+      "amount" => 0,
+    }
+    cart[product.id.to_s] = cart[product.id.to_s] || initial_data
   end
 end

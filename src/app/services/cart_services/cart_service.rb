@@ -12,7 +12,6 @@ class CartServices::CartService
 
     cart = @data_service.get_session
 
-    @data_service.init_cart_product(cart, product)
     @data_service.add_cart_product(cart, product, add_cart_form)
 
     @data_service.set_session(cart)
@@ -40,7 +39,6 @@ class CartServices::CartService
 
     cart = @data_service.get_session
 
-    @data_service.init_cart_product(cart, product)
     @data_service.delete_cart_product(cart, product)
 
     @data_service.set_session(cart)
