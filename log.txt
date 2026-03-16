@@ -20,3 +20,21 @@ rails generate controller Admin::Products
 rails generate model UserOrder user:references
 
 rails generate model UserOrderDetail user_order:references product:references amount:integer price:integer discarded_at:datetime
+
+
+-----------------------------------
+
+
+npm install vue @vitejs/plugin-vue
+
+npm install @vitejs/plugin-vue --save-dev
+
+
+
+npm uninstall react react-dom
+
+npm uninstall --save-dev @types/react @types/react-dom
+
+npm uninstall @vitejs/plugin-react
+
+
