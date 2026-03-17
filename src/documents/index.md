@@ -13,6 +13,7 @@
 
 - [ユーザー](./models/user.md)
   - [ユーザーオーダー](./models/user_order.md)
+    - [ユーザーオーダー詳細](./models/user_order_detail.md)
 - [管理者](./models/admin_user.md)
 - [商品](./models/product.md)
 
