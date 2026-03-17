@@ -1,6 +1,6 @@
 <svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
   <!-- 赤い円 -->
-  <circle cx="256" cy="256" r="256" fill="red"/>
+  <circle cx="256" cy="256" r="256" fill="rgba(89, 89, 235, 1)"/>
 
   <!-- R の文字（中央配置） -->
   <text
@@ -10,9 +10,9 @@
     text-anchor="middle"
     font-size="280"
     font-family="Arial, sans-serif"
-    fill="white"
+    fill="#e9d4d4ff"
     font-weight="bold"
   >
-    R
+    E
   </text>
 </svg>
