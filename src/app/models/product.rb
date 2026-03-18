@@ -5,6 +5,8 @@
 class Product < ApplicationRecord
   include Discard::Model
 
+  has_one_attached :image
+
   has_many :user_order_details
 
   validates :name, presence: true

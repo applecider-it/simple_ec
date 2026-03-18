@@ -42,3 +42,9 @@ npm install alpinejs
 
 npm install swiper
 
+-----------------------------------
+
+
+rails active_storage:install
+rails db:migrate
+

@@ -40,9 +40,13 @@ class Admin::ProductsController < Admin::BaseController
 
   # 更新処理
   def update
-    params = product_params
+    if params[:remove_image] == "1"
+      logger.debug("remove_image !!!!!!")
+      @product.image.purge
+    end
 
-    @product.assign_attributes(params)
+    logger.debug("params: " + params.inspect)
+    @product.assign_attributes(product_params)
 
     if @product.valid?
       # エラーがないとき
@@ -79,7 +83,7 @@ class Admin::ProductsController < Admin::BaseController
 
   # 変更可能な項目だけを絞り込む
   private def product_params
-    params.expect(product: [ :name, :price, :description ])
+    params.expect(product: [ :name, :price, :description, :image ])
   end
 
   # 更新画面の共通処理

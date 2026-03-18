@@ -18,3 +18,19 @@
   <%= field_error(form, :description) %>
 </div>
 
+<div class="my-3">
+  <%= form.label :image, class: "app-form-label" %>
+  <%= form.file_field :image, class: "app-form-input" %>
+  <%= field_error(form, :image) %>
+  <% if @product.image.attached? %>
+    <div>
+      <div>@product.image.filename</div>
+      <div><%= @product.image.content_type %></div>
+      <div><%= image_tag @product.image, width: 200 %></div>
+      <div>
+        <%= check_box_tag :remove_image, "1" %>
+        <%= label_tag :remove_image, "画像を削除" %>
+      </div>
+    </div>
+  <% end %>
+</div>
