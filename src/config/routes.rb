@@ -53,14 +53,20 @@ Rails.application.routes.draw do
 
     scope as: "admin", module: "admin" do
       get "", to: "home#index"
+
       resources :users, except: [:show] do
         member do
           patch :restore
         end
-
-        resources :user_orders, only: [:index]
       end
+
       resources :products, except: [:show] do
+        member do
+          patch :restore
+        end
+      end
+
+      resources :user_orders, except: [:show] do
         member do
           patch :restore
         end

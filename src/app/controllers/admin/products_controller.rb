@@ -1,3 +1,4 @@
+# 商品管理コントローラー
 class Admin::ProductsController < Admin::BaseController
   before_action :set_product, only: %i[ edit update destroy restore ]
   before_action :edit_common, only: %i[ edit update ]
