@@ -44,6 +44,9 @@ Rails.application.routes.draw do
   # お知らせページ
   get "info", to: "home#info"
 
+  # 固定ページ
+  get '/contents/:slug', to: 'pages#show', as: :pages_show
+
   # 管理画面
   scope "/admin_secret" do
     devise_for :admin_users, controllers: {

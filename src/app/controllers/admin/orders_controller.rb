@@ -64,6 +64,6 @@ class Admin::OrdersController < Admin::BaseController
   # 更新画面の共通処理
   private def edit_common
     summary_service = OrderServices::SummaryService.new
-    @info = summary_service.summary_by_user_order(@user_order)
+    @info = summary_service.summary_by_user_order(@user_order.user_order_details.includes(:product))
   end
 end

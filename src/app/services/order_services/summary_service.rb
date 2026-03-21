@@ -24,9 +24,9 @@ class OrderServices::SummaryService
   end
 
   # オーダーからサマリー取得
-  def summary_by_user_order(user_order)
+  def summary_by_user_order(user_order_details)
     list = []
-    user_order.user_order_details.each do |user_order_detail|
+    user_order_details.each do |user_order_detail|
       list.push({
         product: user_order_detail.product,
         amount: user_order_detail.amount,

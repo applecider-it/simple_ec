@@ -13,12 +13,12 @@ link_style = "hover:text-indigo-500"
 
   <!-- Desktop Menu -->
   <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
-    <%= link_to 'Top', root_path, class: link_style %>
+    <%= link_to 'About', pages_show_path(slug: 'about'), class: link_style %>
+    <%= link_to 'お問い合わせ', pages_show_path(slug: 'contact'), class: link_style %>
     <%= link_to '商品', products_path, class: link_style %>
     <%= link_to 'カート' + (@application_common[:cart_count] > 0 ? " (#{@application_common[:cart_count]})" : ''), cart_path, class: link_style %>
     <%= link_to 'お知らせ', info_path, class: link_style %>
     <% if user_signed_in? %>
-      <%= link_to 'マイオーダー', orders_path, class: link_style %>
       <%= link_to current_user.email, edit_user_registration_path, class: link_style %>
       <%= button_to 'Logout',
         destroy_user_session_path,
