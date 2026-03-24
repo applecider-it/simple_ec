@@ -1,5 +1,5 @@
 
-cd /home/owner/workspace/tmp/simple_ec/src
+cd ~/workspace/github/simple-ec/src
 
 -----------------------------------
 
